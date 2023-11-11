@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Connexion</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      background: #607D8B;
+      font-family: arial;
+    }
+    .login-form h1 {
+      font-size: 36px;
+      text-align: center;
+      color: #b0c381;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+    .login-form .social-icon {
+      width: 100%;
+      font-size: 20px;
+      padding-top: 20px;
+      color: #fff;
+      text-align: center;
+      float: left;
+    }
+    .login-form {
+      background: #fff;
+      width: 450px;
+      border-radius: 6px;
+      margin: 0 auto;
+      display: table;
+      padding: 15px 30px 30px;
+      box-sizing: border-box;
+      margin-top: 50px !important;
+    }
+    .form-group {
+      float: left;
+      width: 100%;
+      margin: 0 0 15px;
+      position: relative;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 5px;
+      height: 56px;
+      border-radius: 74px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 15px;
+      padding-left: 75px;
+    }
+    .login-form .form-group .input-icon {
+      font-size: 15px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      border-radius: 25px;
+      bottom: 0;
+      height: 100%;
+      padding-left: 35px;
+      color: #666;
+    }
+    .login-form .login-btn {
+      background: #b0c381;
+      padding: 11px 50px;
+      border-color: #b0c381;
+      color: #fff;
+      text-align: center;
+      margin: 0 auto;
+      font-size: 20px;
+      border: 1px solid #b0c381;
+      border-radius: 44px;
+      width: 50%;
+      height: 56px;
+      cursor: pointer;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+    .login-form .reset-psw {
+      float: left;
+      width: 100%;
+      text-decoration: none;
+      color: #b0c381;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 11px;
+    }
+    .login-form .social-icon button {
+      font-size: 20px;
+      color: white;
+      height: 50px;
+      width: 50px;
+      background: #b0c381;
+      border-radius: 60%;
+      margin: 0px 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .login-form button:hover{
+      opacity: 0.9;
+    }
+    .login-form .seperator {
+      float: left;
+      width: 100%;
+      border-top: 1px solid #ccc;
+      text-align: center;
+      margin: 50px 0 0;
+    }
+    .login-form .seperator b {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+      text-align: center;
+      line-height: 40px;
+      background: #fff;
+      display: inline-block;
+      border: 1px solid #e0e0e0;
+      border-radius: 50%;
+      position: relative;
+      top: -22px;
+      z-index: 1;
+    }
+    .login-form p {
+      float: left;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+    @media screen and (max-width:767px) {
+      .login-form {
+        width: 100%;
+        padding: 15px 15px 30px;
+        margin-top: 50px !important;
+      }
+    }
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+    }
+
+    /* Avatar image */
+    img.avatar {
+      width: 40px;
+      lenght: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  </style>
+
+</head>
+<body>
+<div class="login-form">
+  <form role="form" method="post" action="/login">
+    <h1>Se connecter</h1>
+    <div class="imgcontainer">
+      <img src="https://img1.freepng.fr/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="Avatar" class="avatar">
+    </div>
+    <div class="form-group">
+      <input type="text" name="username" placeholder="Email ou nom d'utilisateur">
+      <span class="input-icon"><i class="fa fa-envelope"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" placeholder="Mot de passe">
+      <span class="input-icon"><i class="fa fa-lock"></i></span>
+    </div>
+    <button class="login-btn">Login</button>
+    <a class="reset-psw" href="#">Mot de passe oublié?</a>
+    <div class="seperator"><b>or</b></div>
+    <p>Connectez-vous avec votre compte de réseau social</p>
+    <!-- Social login buttons -->
+    <div class="social-icon">
+
+      <a th:href="@{/oauth2/authorization/google}" type="button"><i class="fa fa-google"></i></a>
+      <a th:href="@{/oauth2/authorization/google}" type="button"><i class="fa fa-facebook"></i></a>
+<!--      <a th:href="@{/oauth2/authorization/google}" type="button"><i class='fa fa-instagram'></i></a>-->
+<!--      <a th:href="@{/oauth2/authorization/google}" type="button"><i class='fa fa-whatsapp'></i></a>-->
+    </div>
+  </form>
+</div>
+</body>
+</html>
+
+

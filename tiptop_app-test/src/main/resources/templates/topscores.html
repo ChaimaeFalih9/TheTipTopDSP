@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="../static/assets_old/datatable/cdn.datatables.net_1.10.12_css_dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="../static/assets_old/datatable/maxcdn.bootstrapcdn.com_bootstrap_3.3.6_css_bootstrap.min.css">
+<link rel="stylesheet" href="../static/assets_old/datatable/cdn.datatables.net_buttons_1.2.2_css_buttons.bootstrap.min.css">
+<div th:include="include/header.html"></div>
+
+
+
+<style>
+  body {margin:2em;}
+</style>
+<table id="topscore" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Number attempts</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="score : ${gameScores}">
+    <td><span th:text="${score.getUser()}"></span></td>
+    <td><span th:text="${score.getScore()}"></span></td>
+  </tr>
+  </tbody>
+</table>
+
+<div th:include="include/footer.html"></div>
+
+<script src="/assets_old/datatable/cdn.datatables.net_1.10.12_js_jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    //Only needed for the filename of export files.
+    //Normally set in the title tag of your page.
+    document.title='Simple DataTable';
+    // DataTable initialisation
+    $('#topscore').DataTable(
+            {
+              "dom": '<"dt-buttons"Bf><"clear">lirtp',
+              "paging": false,
+              "searching": false,
+              "info": false,
+              "autoWidth": true
+            }
+    );
+  });
+</script>

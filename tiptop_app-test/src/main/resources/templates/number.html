@@ -1,0 +1,27 @@
+<div th:include="include/header.html"></div>
+
+
+
+<div class="carousel-item active" style="background-image: url(assets/img/slide/tea-3.jpeg)">
+
+  <section id="hero" class="d-flex align-items-center" style="margin-top: 5% !important;">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center" >
+        <div class="col-xl-7 col-lg-12 text-center" >
+          <h1>Devinez le numéro</h1>
+          <p>Essayez de deviner le nombre généré aléatoirement entre 1 et 100.</p>
+          <input type="text" id="guessInput" placeholder="Entrez votre supposition">
+          <button class="btn btn-dark"  onclick="checkGuess()">Check</button>
+          <p id="result" style="padding-top: 25px;"></p>
+          <a class="btn btn-success" href="http://localhost:8080/scores" >Mes gains</a>
+  <!--        <a class="btn btn-danger" href="http://localhost:8080/scores" >All Scores</a>-->
+  <!--        <a class="btn btn-success" href="http://localhost:8080/topscores" >The best </a>-->
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- End Hero -->
+ </div>
+
+<div th:include="include/footer.html"></div>
