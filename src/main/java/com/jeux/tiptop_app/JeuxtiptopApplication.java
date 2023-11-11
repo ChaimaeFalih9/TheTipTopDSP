@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class JeuxtiptopApplication implements CommandLineRunner {
-	//    test for branches git
 
 	@Autowired
 	UserRepository userRepository;
@@ -27,6 +26,7 @@ public class JeuxtiptopApplication implements CommandLineRunner {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String plainPassword = "123456";
 		String hashedPassword = passwordEncoder.encode(plainPassword);
+
 		if (userRepository.count() == 0) {
 			// Code to create a user
 			User user = new User();
