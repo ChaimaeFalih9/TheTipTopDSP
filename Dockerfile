@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/*.jar /app/your-spring-boot-app.jar
 
 # Expose ports for MySQL and your Spring Boot app
-EXPOSE 8080
+EXPOSE 8000
 
 
 # Start MySQL service and then run the Spring Boot application
