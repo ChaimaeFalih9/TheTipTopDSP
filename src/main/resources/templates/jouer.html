@@ -1,37 +1,41 @@
 <div th:include="include/header.html"></div>
-<style>
-    table {
-        margin: auto;
-    }
-    td {
-        width: 300px;
-        height: 135px;
-        text-align: center;
-        font-size: 32px;
-        border: 1px solid black;
-    }
-</style>
+<section id="hero" style="margin-top: 155px">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-<section id="hero" class="d-flex align-items-center" style="margin-top: 6% !important;">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-        <table>
-            <tr>
-                <td id="0"></td>
-                <td id="1"></td>
-                <td id="2"></td>
-            </tr>
-            <tr>
-                <td id="3"></td>
-                <td id="4"></td>
-                <td id="5"></td>
-            </tr>
-            <tr>
-                <td id="6"></td>
-                <td id="7"></td>
-                <td id="8"></td>
-            </tr>
-        </table>
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide 1 -->
+            <div class="carousel-item active" style="background-image: url(assets/img/slide/tea-1.jpeg)">
+                <div class="container">
+                    <h1>Notre Histoire</h1>
+                    <p><strong>Bienvenue chez "Thé Tiptop" – une aventure dans chaque tasse depuis 2012 !</strong></p>
+                    <p>Fondée en 2012, "Thé Tiptop" est bien plus qu'une marque de thé, c'est une passion qui a commencé il y a plus d'une décennie. Notre voyage a débuté avec la vision de créer une expérience de thé exceptionnelle, alliant qualité, variété et engagement envers nos clients.</p>
+                    <ul>
+                        <strong>La Quête de la Qualité</strong>
+                        <p>Chez "Thé Tiptop", chaque feuille de thé est méticuleusement sélectionnée et cueillie à la main. Nous sommes fiers de vous offrir une gamme diversifiée de thés, des classiques aux créations originales, pour répondre aux goûts uniques de nos clients.</p>
+                        <strong>Notre Engagement</strong>
+                        <p>La qualité supérieure, la variété exquise, la traçabilité de l'origine, la durabilité environnementale et une expérience client exceptionnelle sont les piliers de notre engagement envers vous. Nous croyons que le thé ne devrait pas seulement être une boisson, mais une expérience enrichissante qui nourrit le corps et l'esprit.</p>
+
+                    </ul>
+
+                    <h4>Collections uniques de Thé</h4>
+                    <p>Explorez nos collections, chacune conçue pour vous emmener dans un voyage gustatif inoubliable :</p>
+                    <ul>
+                        <strong>Collection Classique :</strong> Des thés noirs et verts traditionnels pour les amateurs de saveurs intemporelles.<br>
+                        <strong>Collection Gourmet :</strong> Des créations uniques et des mélanges originaux pour des expériences de dégustation exceptionnelles.<br>
+                        <strong>Collection Bien-être :</strong> Des infusions aux herbes apaisantes pour favoriser la relaxation et la santé.<br>
+                        <strong>Collection Saisonnalité :</strong> Des thés spéciaux qui capturent l'esprit de chaque saison.<br>
+                    </ul>
+
+                    <h4>Notre Vision</h4>
+                    <p>"Thé Tiptop" est plus qu'une entreprise – c'est une communauté de passionnés de thé. Nous croyons en l'importance de partager des moments précieux autour d'une tasse de thé, créant ainsi des souvenirs qui durent toute une vie.</p>
+                    <p>Merci de faire partie de notre histoire. Explorez notre boutique en ligne pour découvrir nos thés exceptionnels et laissez "Thé Tiptop" être le compagnon.</p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </section>
 
-<div th:include="include/footer.html"></div>
