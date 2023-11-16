@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class FaqController {
-
+//test junkins
 
     @GetMapping("/faq")
     public ModelAndView faq(HttpServletRequest request) {
