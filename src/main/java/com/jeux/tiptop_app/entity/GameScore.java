@@ -4,21 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-/**
- * @author kaoutarelmofatiche
- */
+
 @Entity
 public class GameScore {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int score;
+    private Integer score;
 
     private String user;
 
-    // Constructors, getters, and setters
+    // Getters and setters
 
 
     public Long getId() {
@@ -29,11 +26,11 @@ public class GameScore {
         this.id = id;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
@@ -43,14 +40,5 @@ public class GameScore {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public GameScore(Long id, int score, String user) {
-        this.id = id;
-        this.score = score;
-        this.user = user;
-    }
-
-    public GameScore() {
     }
 }
