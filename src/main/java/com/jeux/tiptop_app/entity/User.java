@@ -1,16 +1,15 @@
 package com.jeux.tiptop_app.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author kaoutarelmofatiche
  */
 
 @Entity
-public class User {
+@Table(name = "User")
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +18,9 @@ public class User {
     private String name;
     private String username;
     private String password;
-    private int score;
+    private Long score;
+
+    private Long role;
 
 
     // Constructors, getters, and setters
@@ -57,12 +58,20 @@ public class User {
         this.password = password;
     }
 
-    public int getScore() {
+    public Long getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Long score) {
         this.score = score;
+    }
+
+    public Long getRole() {
+        return role;
+    }
+
+    public void setRole(Long role) {
+        this.role = role;
     }
 
     public User() {
