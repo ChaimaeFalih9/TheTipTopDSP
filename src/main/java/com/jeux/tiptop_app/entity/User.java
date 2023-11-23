@@ -18,8 +18,9 @@ public class User implements Serializable {
     private String name;
     private String username;
     private String password;
+    @Column(nullable = true)
     private Long score;
-
+    @Column(nullable = true)
     private Long role;
 
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,26 +25,24 @@ public class GameController {
     GameService gameService;
 
     @PostMapping("/scores")
-    public ResponseEntity<String> scores(@RequestBody GameScore gameScore, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
+    public ResponseEntity<String> scores(@RequestBody GameScore gameScore) {
 
-        gameService.savescore(gameScore,username);
+        gameService.savescore(gameScore);
         return ResponseEntity.ok("Score saved successfully");
     }
 
     @GetMapping("/scores")
-    public ModelAndView scores(HttpServletRequest request) {
+    public ModelAndView scores(HttpServletRequest request,@RequestParam(value = "user") String user) {
 
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
 
-        List<GameScore> gameScores = gameService.findByUser(username);
+        List<GameScore> gameScores = gameService.findByUser(user);
 
         ModelAndView modelAndView = new ModelAndView("score");
         modelAndView.addObject("user", "connect");
-        modelAndView.addObject("name", username);
+        modelAndView.addObject("name", user);
         modelAndView.addObject("gameScores", gameScores);
 
         return modelAndView;

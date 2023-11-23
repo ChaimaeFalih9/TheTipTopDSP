@@ -51,10 +51,25 @@ public class MainController {
             model.addAttribute("name", firstName);
         } else{
             model.addAttribute("user", "noconnect");
-            model.addAttribute("name", "username");
+            model.addAttribute("name", null);
         }
 
         return "index";
+    }
+
+    @GetMapping("/index")
+    public ModelAndView index(HttpServletRequest request) {
+
+
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+
+
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("user", "connect");
+        modelAndView.addObject("name", username);
+
+        return modelAndView;
     }
     @PostMapping("/loginm")
     public String loginm(Principal principal, Model model, HttpServletRequest request, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
@@ -105,62 +120,49 @@ public class MainController {
 
     @PostMapping("/signup")
     public ModelAndView signup(HttpServletRequest request,
-                               @RequestParam("name") String name,
+                               @RequestParam("email") String email,
                                @RequestParam("username") String username,
                                @RequestParam("password") String password) {
 
-        try {
-            User newUser = userService.signup(name, username, password);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
+        User newUser = userService.signup(email, username, password);
+        ModelAndView modelAndView = new ModelAndView("login");
 
-            User user = userService.findByUsername(username);
-            String redirectUrl = "/?user=" + "noconnect"+"&username=";
-            if (user != null) {
-                redirectUrl = "/?user=" + "connect"+"&username="+username;
-            }
-
-            return new ModelAndView("redirect:" + redirectUrl);
-        } catch (IllegalArgumentException e) {
-            ModelAndView modelAndView = new ModelAndView("index");
-            modelAndView.addObject("error", e.getMessage());
-            return modelAndView;
-        }
+        return modelAndView;
     }
 
-    @GetMapping("/users")
+    @GetMapping("/getAllUsers")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> userList = userService.getAllUsers();
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
     @GetMapping("/number_validation")
-    public ModelAndView number_validation(HttpServletRequest request) {
+    public ModelAndView number_validation(HttpServletRequest request,@RequestParam(value = "user") String user ) {
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
 
         ModelAndView modelAndView = new ModelAndView("number_validation");
         modelAndView.addObject("user", "connect");
-        modelAndView.addObject("name", username);
+        modelAndView.addObject("name", user);
 
         return modelAndView;
 
     }
     @GetMapping("/number")
-    public ModelAndView number(HttpServletRequest request) {
+    public ModelAndView number(HttpServletRequest request,@RequestParam(value = "user") String user) {
 
         HttpSession session = request.getSession();
         ModelAndView modelAndView = new ModelAndView("number");
 
         String param = request.getParameter("param").toString();
         if(!param.equals(codeValidation)){
-           modelAndView = new ModelAndView("number_validation");
+            modelAndView = new ModelAndView("number_validation");
         }
         String username = (String) session.getAttribute("username");
         modelAndView.addObject("user", "connect");
-        modelAndView.addObject("name", username);
+        modelAndView.addObject("name", user);
 
 
         return modelAndView;

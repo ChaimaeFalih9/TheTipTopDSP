@@ -81,7 +81,13 @@
         <div class="col-lg-4">
           <!--          <a href="#" class="btn-learn-more">JE M'INSCRIS</a>-->
           <div style="text-align: center" >
-            <a href="/number_validation" class="btn-learn-more">JE PARTICIPE</a>
+            <a onclick="function number_validation() {
+            var username = $('#username').text().trim();
+            window.location.href = '/number_validation?user='+username;
+
+            }
+            number_validation()" th:if="${name != null}" class="btn-learn-more">JE PARTICIPE</a>
+            <a href="/login" th:if="${name == null}" class="btn-learn-more">JE PARTICIPE</a>
           </div>
 
         </div>

@@ -47,10 +47,12 @@
 
             const score = i; // Replace with the actual score value
 
+            var username = $('#username').text().trim();
             const url = '/scores'; // Replace with the appropriate endpoint URL
 
             const requestBody = {
-                score: score
+                score: score,
+                user: username
             };
 
             fetch(url, {
@@ -165,7 +167,8 @@
 
     $("#btn_success").click(function (e) {
        var param =  $("#requiredInput").val();
-        window.location.href = '/number?param='+param;
+       var usernparam =  $("#username").text().trim();
+        window.location.href = '/number?param='+param+"&user="+usernparam;
     })
 
 </script>

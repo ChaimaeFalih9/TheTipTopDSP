@@ -13,7 +13,11 @@
           <input type="text" id="guessInput" placeholder="Entrez votre supposition">
           <button class="btn btn-dark"  onclick="checkGuess()">Check</button>
           <p id="result" style="padding-top: 25px;"></p>
-          <a class="btn btn-success" href="http://localhost:8080/scores" >Mes gains</a>
+          <a class="btn btn-success" href="#" onclick="function scores() {
+            var username = $('#username').text().trim();
+            window.location.href = '/scores?user='+username;
+          }
+          scores()" >Mes gains</a>
   <!--        <a class="btn btn-danger" href="http://localhost:8080/scores" >All Scores</a>-->
   <!--        <a class="btn btn-success" href="http://localhost:8080/topscores" >The best </a>-->
         </div>
