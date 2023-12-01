@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="../static/assets/datatable/cdn.datatables.net_1.10.12_css_dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="../static/assets/datatable/maxcdn.bootstrapcdn.com_bootstrap_3.3.6_css_bootstrap.min.css">
+<link rel="stylesheet" href="../static/assets/datatable/cdn.datatables.net_buttons_1.2.2_css_buttons.bootstrap.min.css">
+<div th:include="include/header.html"></div>
+
+<section style="padding-top: 160px !important;;padding-left: 50px !important;;padding-right: 50px !important;">
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 mb-12" style="text-align: left">
+            <div class="col-md-4 col-lg-8 mb-8">
+                <form action="/searchMail" method="get">
+                    <div class="col-md-4 col-lg-4 mb-4">
+                        <input type="email" class="form-control" name="email">
+                        <input style="display: none" type="text" class="form-control" name="user" th:value="${name}">
+                    </div>
+                    <div class="col-md-4 col-lg-4 mb-4">
+                        <button type="submit" class="btn btn-success">Rechercher</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-4 col-lg-4 mb-4" style="text-align: right">
+                <a href="/export-excel" class="btn btn-primary">Exporter Excel</a>
+            </div>
+            <table id="Clients" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Gagner</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="client : ${clients}">
+                    <td><span th:text="${client.getUser()}"></span></td>
+                    <td><span th:text="${client.getGagne()}"></span></td>
+                    <td th:if="${client.getEtat()=='0'}"><a th:href="@{/etatGagne(user=${name}, client=${client.getId()})}" class="btn btn-success">Récupérer</a></td>
+                    <td th:if="${client.getEtat()==1}"><button disabled class="btn btn-success">Récupérer</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div th:include="include/footer.html"></div>
+
