@@ -86,7 +86,7 @@
             window.location.href = '/number_validation?user='+username;
 
             }
-            number_validation()" th:if="${name != null}" class="btn-learn-more">JE PARTICIPE</a>
+            number_validation()" th:if="${name != null && role==2}" class="btn-learn-more">JE PARTICIPE</a>
             <a href="/login" th:if="${name == null}" class="btn-learn-more">JE PARTICIPE</a>
           </div>
 
@@ -235,9 +235,11 @@
         <div class="row content">
           <div class="col-lg-4"></div>
           <div class="col-lg-4">
-            <form action="" method="post">
-              <input style="width:70% !important;" type="email" placeholder="Veuillez entrer votre email" name="email">
-              <input class="btn btn-dark" type="submit" value="S'abonner">
+            <form action="/send" method="post">
+              <input style="width:70% !important;height: 30px;margin-top: 2px;color: black" type="email" name="toemail"   placeholder="Veuillez entrer votre email">
+              <input type="text" name="user" style="color: black;display: none" th:if="${name != null}" th:value="${name}">
+              <input class="btn btn-dark" th:if="${name != null}"  type="submit" value="S'abonner">
+              <a href="/login" class="btn btn-dark" th:if="${name == null}">S'abonner</a>
             </form>
           </div></div>
         <div class="col-lg-4"></div>
@@ -362,6 +364,31 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- Trigger the modal with a button -->
+<button hidden type="button" id="BtnCookie" class="btn btn-info btn-lg" data-toggle="modal" data-target="#cookieModal"></button>
+
+<!-- Modal -->
+<div class="modal fade"  id="cookieModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="/assets/img/cookies.png" width="50px">
+        <h4 class="modal-title"> Cookies Jeux TipTop</h4>
+      </div>
+      <div class="modal-body">
+      <div style="padding: 5px;text-align: center">
+        <p>Ce site utilise des cookies pour améliorer votre expérience. En continuant votre visite, vous acceptez notre utilisation des cookies. Pour plus d'informations, consultez notre Politique de Cookies.</p>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Valider</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Autoris</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

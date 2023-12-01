@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
 
             User newUser = new User();
             newUser.setName(username);
+            newUser.setEmail(email);
             newUser.setScore(SCORE);
             newUser.setRole(ROLE);
             newUser.setUsername(username);
@@ -69,6 +70,16 @@ public class UserServiceImpl implements UserService {
         }
 
         return Reponse;
+    }
+
+    @Override
+    public List<User> getAllClient() {
+        return userRepository.getAllClient();
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return userRepository.getByEmail(email);
     }
 
 }

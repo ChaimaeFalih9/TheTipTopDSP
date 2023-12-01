@@ -58,16 +58,17 @@ public class MainController {
     }
 
     @GetMapping("/index")
-    public ModelAndView index(HttpServletRequest request) {
+    public ModelAndView index(HttpServletRequest request,@RequestParam(value = "user") String user) {
 
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
-
+        User userByName = userService.findByUsername(user);
 
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("user", "connect");
-        modelAndView.addObject("name", username);
+        modelAndView.addObject("name", user);
+        modelAndView.addObject("role", userByName.getRole());
 
         return modelAndView;
     }
@@ -105,14 +106,16 @@ public class MainController {
 
 
     @GetMapping("/jouer")
-    public ModelAndView jouer(HttpServletRequest request) {
+    public ModelAndView jouer(HttpServletRequest request,@RequestParam(value = "user") String user) {
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
+        User userByName = userService.findByUsername(user);
 
         ModelAndView modelAndView = new ModelAndView("jouer");
         modelAndView.addObject("user", "connect");
-        modelAndView.addObject("name", username);
+        modelAndView.addObject("name", user);
+        modelAndView.addObject("role", userByName.getRole());
 
         return modelAndView;
 
@@ -142,10 +145,12 @@ public class MainController {
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
+        User userByName = userService.findByUsername(user);
 
         ModelAndView modelAndView = new ModelAndView("number_validation");
         modelAndView.addObject("user", "connect");
         modelAndView.addObject("name", user);
+        modelAndView.addObject("role", userByName.getRole());
 
         return modelAndView;
 
@@ -155,6 +160,7 @@ public class MainController {
 
         HttpSession session = request.getSession();
         ModelAndView modelAndView = new ModelAndView("number");
+        User userByName = userService.findByUsername(user);
 
         String param = request.getParameter("param").toString();
         if(!param.equals(codeValidation)){
@@ -163,6 +169,7 @@ public class MainController {
         String username = (String) session.getAttribute("username");
         modelAndView.addObject("user", "connect");
         modelAndView.addObject("name", user);
+        modelAndView.addObject("role", userByName.getRole());
 
 
         return modelAndView;

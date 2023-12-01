@@ -5,7 +5,26 @@
 <div class="carousel-item active" style="background-image: url(assets/img/slide/tea-3.jpeg)">
 
   <section id="hero" class="d-flex align-items-center" style="margin-top: 5% !important;">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+    <div id="gagnediv"  class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center" >
+        <div class="col-xl-7 col-lg-12 text-center" >
+          <h1>🎁🎁 Bravo vous avez gagné 🎁🎁</h1>
+          <form action="/gagne" method="post" id="validgagne" >
+            <p id="output"></p>
+            <input hidden name="user" type="text" th:value="${name}"/>
+            <input hidden name="gagne" id="gagne" type="text" />
+            <button hidden type="submit"></button>
+          </form>
+
+          <button class="btn btn-success"  onclick="function jouerShow() {
+$('#jouerdiv').show(); $('#gagnediv').hide();
+          }
+          jouerShow()">Jouer</button>
+        </div>
+      </div>
+
+    </div>
+    <div style="display: none" id="jouerdiv" class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center" >
         <div class="col-xl-7 col-lg-12 text-center" >
           <h1>Devinez le numéro</h1>
@@ -27,5 +46,6 @@
 
   </section><!-- End Hero -->
  </div>
+
 
 <div th:include="include/footer.html"></div>
