@@ -54,6 +54,26 @@
           </ul>
           <p>Pour plus d'informations sur notre jeu concours, connectez vous puis visitez notre page <strong>FAQ.</strong></p>
           <h5 style="text-align: center">Le jeu-concours est 100% gagnant.</h5>
+          <div class="image-row">
+            <div class="image-column">
+              <img src="assets/img/slide/TIP1.jpeg" alt="Image 1" style="width: 100%; max-width: 200px; margin: 10px 0;">
+            </div>
+            <div class="image-column">
+              <img src="assets/img/slide/TIP3.jpeg" alt="Image 2" style="width: 100%; max-width: 200px; margin: 10px 0;">
+            </div>
+            <div class="image-column">
+              <img src="assets/img/slide/TOP2.jpeg" alt="Image 3" style="width: 100%; max-width: 200px; margin: 10px 0;">
+            </div>
+            <div class="image-column">
+              <img src="assets/img/slide/TIP4.jpeg" alt="Image 3" style="width: 100%; max-width: 200px; margin: 10px 0;">
+            </div>
+            <div class="image-column">
+              <img src="assets/img/slide/TIP6.jpeg" alt="Image 3" style="width: 100%; max-width: 200px; margin: 10px 0;">
+            </div>
+            <div class="image-column">
+              <img src="assets/img/slide/TIP5.jpeg" alt="Image 3" style="width: 100%; max-width: 200px; margin: 10px 0;">
+            </div>
+          </div>
         </div>
         <div class="col-lg-3"> </div>
         <div class="col-lg-12"> <hr> </div>
@@ -61,7 +81,13 @@
         <div class="col-lg-4">
           <!--          <a href="#" class="btn-learn-more">JE M'INSCRIS</a>-->
           <div style="text-align: center" >
-            <a href="/number_validation" class="btn-learn-more">JE PARTICIPE</a>
+            <a onclick="function number_validation() {
+            var username = $('#username').text().trim();
+            window.location.href = '/number_validation?user='+username;
+
+            }
+            number_validation()" th:if="${name != null && role==2}" class="btn-learn-more">JE PARTICIPE</a>
+            <a href="/login" th:if="${name == null}" class="btn-learn-more">JE PARTICIPE</a>
           </div>
 
         </div>
@@ -209,9 +235,11 @@
         <div class="row content">
           <div class="col-lg-4"></div>
           <div class="col-lg-4">
-            <form action="" method="post">
-              <input style="width:70% !important;" type="email" placeholder="Veuillez entrer votre email" name="email">
-              <input class="btn btn-dark" type="submit" value="S'abonner">
+            <form action="/send" method="post">
+              <input style="width:70% !important;height: 30px;margin-top: 2px;color: black" type="email" name="toemail"   placeholder="Veuillez entrer votre email">
+              <input type="text" name="user" style="color: black;display: none" th:if="${name != null}" th:value="${name}">
+              <input class="btn btn-dark" th:if="${name != null}"  type="submit" value="S'abonner">
+              <a href="/login" class="btn btn-dark" th:if="${name == null}">S'abonner</a>
             </form>
           </div></div>
         <div class="col-lg-4"></div>
@@ -340,6 +368,31 @@
   </div>
 </div>
 
+<!-- Trigger the modal with a button -->
+<button hidden type="button" id="BtnCookie" class="btn btn-info btn-lg" data-toggle="modal" data-target="#cookieModal"></button>
+
+<!-- Modal -->
+<div class="modal fade"  id="cookieModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="/assets/img/cookies.png" width="50px">
+        <h4 class="modal-title"> Cookies Jeux TipTop</h4>
+      </div>
+      <div class="modal-body">
+      <div style="padding: 5px;text-align: center">
+        <p>Ce site utilise des cookies pour améliorer votre expérience. En continuant votre visite, vous acceptez notre utilisation des cookies. Pour plus d'informations, consultez notre Politique de Cookies.</p>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Valider</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Autoris</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="preloader"></div>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -354,6 +407,18 @@
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .image-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .image-column {
+    flex: 0 0 calc(40% - 40px);
+    max-width: calc(40% - 40px);
+    box-sizing: border-box;
   }
 
 

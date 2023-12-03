@@ -9,7 +9,7 @@
 <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
-
+<script src="/assets/datatable/cdn.datatables.net_1.10.12_js_jquery.dataTables.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
@@ -47,10 +47,12 @@
 
             const score = i; // Replace with the actual score value
 
+            var username = $('#username').text().trim();
             const url = '/scores'; // Replace with the appropriate endpoint URL
 
             const requestBody = {
-                score: score
+                score: score,
+                user: username
             };
 
             fetch(url, {
@@ -159,13 +161,16 @@
         });
         //modal validation
         $("#BtnValider").trigger('click');
+        //modal cookie
+        $("#BtnCookie").trigger('click');
 
     });
 
 
     $("#btn_success").click(function (e) {
        var param =  $("#requiredInput").val();
-        window.location.href = '/number?param='+param;
+       var usernparam =  $("#username").text().trim();
+        window.location.href = '/number?param='+param+"&user="+usernparam;
     })
 
 </script>
@@ -207,4 +212,48 @@
     // Update the date and time every second
     setInterval(updateDateTime, 1000);
 </script>
+
+<script>
+    // Déclaration des variables
+    var a = "un infuseur a thé ";
+    var b = "Une boite de 100g d'un thé détox ou d'infusion";
+    var c = "Une boite de 100g d'un thé signature";
+    var d = "Un coffret découverte d'une valeur 39€";
+    var e = "Un coffret découverte d'une valeur 69€";
+
+
+    // Tableau contenant les variables
+    var variables = [a, b, c, d, e];
+
+    // Récupération de l'élément <p> par son id
+    var outputElement = document.getElementById("output");
+
+    // Génération d'un indice aléatoire
+    var randomIndex = Math.floor(Math.random() * variables.length);
+
+    // Mise à jour du contenu de l'élément <p> avec la variable correspondant à l'indice aléatoire
+    outputElement.innerHTML = variables[randomIndex];
+    $("#gagne").val(variables[randomIndex]);
+    autoSubmitForm();
+    function autoSubmitForm() {
+        // Récupérer les données du formulaire
+        var formData = $("#validgagne").serialize();
+
+
+
+        // Effectuer la requête AJAX
+        $.ajax({
+            type: "POST",
+            url: "/gagne",
+            data: formData,
+            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+            success: function (response) {
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+
 </html>

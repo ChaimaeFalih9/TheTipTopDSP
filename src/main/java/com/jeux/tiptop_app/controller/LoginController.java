@@ -19,7 +19,7 @@ import java.security.Principal;
  */
 @Controller
 public class LoginController {
-//test branch
+    //test branch
     @Autowired
     private UserService userService;
 
@@ -46,10 +46,10 @@ public class LoginController {
         //authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-                model.addAttribute("user", "connect");
-                model.addAttribute("name", user.getUsername());
-                return "index";
-            } else {
+            model.addAttribute("user", "connect");
+            model.addAttribute("name", user.getUsername());
+            return "index";
+        } else {
             return "login";
         }
 
