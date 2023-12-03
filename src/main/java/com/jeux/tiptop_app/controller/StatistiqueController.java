@@ -13,14 +13,14 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-public class FaqController {
-//test
+public class StatistiqueController {
+//test junkins
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/faq")
-    public ModelAndView faq(HttpServletRequest request,@RequestParam(value = "user") String user) {
+    @GetMapping("/statistique")
+    public ModelAndView statistique(HttpServletRequest request,@RequestParam(value = "user") String user) {
 
 
         HttpSession session = request.getSession();
@@ -28,7 +28,7 @@ public class FaqController {
         User userByName = userService.findByUsername(user);
 
 
-        ModelAndView modelAndView = new ModelAndView("faq");
+        ModelAndView modelAndView = new ModelAndView("statistique");
         modelAndView.addObject("user", "connect");
         modelAndView.addObject("name", user);
         modelAndView.addObject("role", userByName.getRole());

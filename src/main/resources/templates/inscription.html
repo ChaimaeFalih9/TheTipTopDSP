@@ -158,22 +158,25 @@
 </head>
 <body>
 <div class="login-form">
-  <form role="form" method="post" action="/login">
-    <h1>Se connecter</h1>
+  <form role="form" method="post" action="/signup">
+    <h1>Inscription</h1>
     <div class="imgcontainer">
       <img src="https://img1.freepng.fr/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="Avatar" class="avatar">
     </div>
     <div class="form-group">
-      <input type="text" required name="username" placeholder="Email ou nom d'utilisateur">
+      <input type="text" name="username" required placeholder="Nom d'utilisateur">
+      <span class="input-icon"><i class="fa fa-envelope"></i></span>
+    </div>
+    <div class="form-group">
+      <input type="text" required name="email" placeholder="Email">
       <span class="input-icon"><i class="fa fa-envelope"></i></span>
     </div>
     <div class="form-group">
       <input type="password" required name="password" placeholder="Mot de passe">
       <span class="input-icon"><i class="fa fa-lock"></i></span>
     </div>
-    <button class="login-btn">Login</button>
-    <a class="reset-psw" href="#">Mot de passe oublié?</a>
-    <a class="reset-psw" href="/inscription"><i class="fa fa-user"></i> Inscription</a>
+    <button class="login-btn">S'inscrire</button>
+    <a class="reset-psw" href="/login"><i class="fa fa-user"></i> Login</a>
     <div class="seperator"><b>or</b></div>
     <p>Connectez-vous avec votre compte de réseau social</p>
     <!-- Social login buttons -->

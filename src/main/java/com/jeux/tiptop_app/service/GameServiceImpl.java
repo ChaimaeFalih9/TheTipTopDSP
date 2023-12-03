@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author kaoutarelmofatiche
- */
+
 @Service
 public class GameServiceImpl implements GameService {
 
@@ -18,15 +16,13 @@ public class GameServiceImpl implements GameService {
 
 
     @Override
-    public void savescore(GameScore gameScore, String username) {
-
-        gameScore.setUser(username);
+    public void savescore(GameScore gameScore) {
         gameRepository.save(gameScore);
     }
 
     @Override
     public List<GameScore> findAll() {
-       return gameRepository.findAll();
+        return gameRepository.findAll();
     }
 
     @Override
@@ -38,4 +34,5 @@ public class GameServiceImpl implements GameService {
     public List<GameScore> findTopUser() {
         return gameRepository.findTopUser();
     }
+
 }

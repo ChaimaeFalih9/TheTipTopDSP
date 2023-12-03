@@ -18,8 +18,11 @@ public class User implements Serializable {
     private String name;
     private String username;
     private String password;
-    private Long score;
 
+    private String email;
+    @Column(nullable = true)
+    private Long score;
+    @Column(nullable = true)
     private Long role;
 
 
@@ -72,6 +75,14 @@ public class User implements Serializable {
 
     public void setRole(Long role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public User() {
