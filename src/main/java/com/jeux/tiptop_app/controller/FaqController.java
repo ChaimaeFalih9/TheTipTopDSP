@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class FaqController {
-//test junkins
+//test
 
     @Autowired
     private UserService userService;
