@@ -1,0 +1,68 @@
+<div th:include="include/header.html"></div>
+
+<section style="padding-top: 160px !important;;padding-left: 50px !important;;padding-right: 50px !important;">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-6 col-lg-6 mb-4">
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        </div>
+        <div class="col-md-6 col-lg-6 mb-4">
+            <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    const xValues = ["Client1", "Client2", "Client4", "Client5", "Client6"];
+    const yValues = [10, 7, 3, 13, 15];
+    const barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Meilleur score"
+            }
+        }
+    });
+</script>
+
+<script>
+    const xValues1 = ["Client1", "Client2", "Client4", "Client5", "Client6"];
+    const yValues1 = [10, 7, 3, 13, 15];
+    const barColors1 = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+        "#e8c3b9",
+        "#1e7145"
+    ];
+
+    new Chart("myChart1", {
+        type: "pie",
+        data: {
+            labels: xValues1,
+            datasets: [{
+                backgroundColor: barColors1,
+                data: yValues1
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Meilleur score"
+            }
+        }
+    });
+</script>
+
+<div style="padding-top: 60px !important;" th:include="include/footer.html"></div>
