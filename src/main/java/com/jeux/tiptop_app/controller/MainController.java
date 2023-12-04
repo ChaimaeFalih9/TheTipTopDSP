@@ -20,10 +20,6 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
-/**
- * @author kaoutarelmofatiche
- */
-
 @Controller
 public class MainController {
 
