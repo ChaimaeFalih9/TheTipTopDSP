@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface GagneRepository extends JpaRepository<Gagne, Long> {
+    //test junkins
     @Query(value = "SELECT g.* FROM gagne g inner join user u where g.user=u.name and u.email=:email",nativeQuery = true)
     List<Gagne> getByEmail(String email);
 }
