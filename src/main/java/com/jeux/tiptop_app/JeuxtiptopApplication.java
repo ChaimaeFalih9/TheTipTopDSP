@@ -71,7 +71,7 @@ public class JeuxtiptopApplication implements CommandLineRunner {
 			User user2 = new User();
 			user2.setUsername("Admin");
 			user2.setName("Admin");
-			user.setEmail("Admin@gmail.com");
+			user2.setEmail("Admin@gmail.com");
 			user2.setRole(1L);
 			user2.setPassword(hashedPassword);
 
