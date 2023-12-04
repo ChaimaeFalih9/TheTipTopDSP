@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
-/**
- * @author kaoutarelmofatiche
- */
 @Controller
 public class LoginController {
     //test branch
@@ -48,6 +45,7 @@ public class LoginController {
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             model.addAttribute("user", "connect");
             model.addAttribute("name", user.getUsername());
+            model.addAttribute("role", user.getRole());
             return "index";
         } else {
             return "login";

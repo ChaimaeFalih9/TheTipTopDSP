@@ -14,6 +14,8 @@ public class Gagne {
     private String user;
     private String etat;
 
+    private String email;
+
 
     // Getters and setters
 
@@ -48,5 +50,13 @@ public class Gagne {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
