@@ -1,0 +1,8 @@
+# robots.txt
+User-agent: *
+Disallow: /number_validation
+Disallow: /number
+Disallow: /api
+Disallow: /css
+
+Sitemap: https://prod.dsp-archio22b-cf-ms-ke.com/assets/sitemap.xml
