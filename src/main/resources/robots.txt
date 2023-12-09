@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://prod.dsp-archio22b-cf-ms-ke.com:8000/sitemap.xml
+Sitemap: https://test.dsp-archio22b-cf-ms-ke.com:8000/sitemap.xml
