@@ -65,7 +65,7 @@ public class ClientController {
 
     @GetMapping("/searchMail")
     public ModelAndView searchMail(@RequestParam(value = "user") String user,@RequestParam(value = "email") String email) {
-
+    //test jenkins
         User userByName = userService.findByUsername(user);
         List<Gagne> clients = gagneService.getByEmail(email);
 
